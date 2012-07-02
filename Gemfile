@@ -1,0 +1,26 @@
+source :rubygems
+
+# Server requirements
+gem 'thin'
+
+# Project requirements
+gem 'rake'
+gem 'sinatra-flash', :require => 'sinatra/flash'
+
+# Component requirements
+gem 'haml'
+
+# Test requirements
+
+# Padrino Stable Gem
+gem 'padrino'
+gem 'httparty'
+
+# Or Padrino Edge
+# gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
+
+
+# Or Individual Gems
+# %w(core gen helpers cache mailer admin).each do |g|
+#   gem 'padrino-' + g, '0.10.6'
+# end

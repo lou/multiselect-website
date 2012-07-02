@@ -1,0 +1,35 @@
+.hero-unit .container:after{
+  content: "."; display: block; height: 0; line-height: 0; font-size: 0; clear: both; min-height: 0; visibility: hidden;
+}
+
+.hero-unit ul{
+  float: left;
+}
+.hero-multiselect{
+  float: right;
+}
+
+ul.contributors{
+  margin: 0;
+}
+
+ul.contributors li{
+  list-style-type: none;
+  padding: 5px 0px;
+}
+
+ul.contributors li img{
+  border: 1px #ddd solid;
+  padding: 1px;
+}
+
+ul.contribute li{
+  padding: 5px 0px;
+}
+
+.custom-header{
+  text-align: center;
+  padding: 3px;
+  background: #000;
+  color: #fff;
+}

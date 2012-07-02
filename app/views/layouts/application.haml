@@ -1,0 +1,422 @@
+!!!
+%html
+  %head
+    %title multiselect.js
+    = stylesheet_link_tag 'bootstrap', 'multiselect', 'theme', 'application'
+  %body{ :'data-spy' => "scroll" }
+    .navbar.navbar-fixed-top#navbar
+      .navbar-inner
+        .container
+          = link_to 'multiselect.js', '#home', :class => 'brand'
+          .nav
+            %ul.nav
+              %li= link_to 'Home', '#home'
+              %li= link_to 'Usage', '#usage'
+              %li= link_to 'Demos', '#demos'
+              %li= link_to 'Project', '#project'
+          .nav.pull-right
+            = link_to 'Download', 'https://github.com/lou/multi-select/zipball/master', :class => 'btn btn-success'
+    .container
+      .hero-unit#home
+        %h1 Multiselect
+        %p
+          This plugin is a drop-in replacement for the standard &lt;select&gt; element with multiple attribute activated.
+        .row
+          %ul
+            %li
+              %strong Free
+              (dual licensed under MIT/GPL)
+            %li
+              Works in an
+              %strong unobtrusive
+              fashion
+            %li
+              Fully
+              %strong open sourced
+            %li
+              %strong Keyboard
+              support
+            %li
+              Provides some
+              %strong callbacks
+            %li
+              Fully customizable via 
+              %strong CSS
+            %li
+              Depends on
+              %strong jQuery 1.7+
+            %li
+              Tiny code
+              %strong ~9kb
+          .hero-multiselect
+            = select_tag 'test', :options => countries, :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
+      .page-header#usage
+        %h2 Usage
+      %h3 HTML
+      %pre
+        %code{ :'data-language' => 'html' }
+          = preserve do
+            :escaped
+              <select multiple="multiple" id="countries" name="countries[]">
+                <option value="fr">France</option>
+                <option value="uk">United Kingdom</option>
+                <option value="us">United States</option>
+                <option value="ch">China</option>
+              </select>
+      %br
+      %h3
+        JavaScript
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#countries').multiselect(options)
+      %h3 Options
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th Name
+            %th type
+            %th default
+            %th description
+        %tbody
+          %tr
+            %td afterSelect
+            %td function
+            %td function(value, text){}
+            %td Function to call after one item is selected.
+          %tr
+            %td afterDeselect
+            %td function
+            %td function(value, text){}
+            %td Function to call after one item is deselected.
+          %tr
+            %td selectableHeader
+            %td HTML
+            %td null
+            %td Text or HTML to display on the selectable container.
+          %tr
+            %td selectedHeader
+            %td HTML
+            %td null
+            %td Text or HTML to display on the selected container.
+          %tr
+            %td keepOrder
+            %td Boolean
+            %td false
+            %td If set to true, it will keep the initial list order. Otherwise it will add item in the selected order.
+          %tr
+            %td disabledClass
+            %td String
+            %td 'disabled' 
+            %td CSS class for disabled items
+      %h3 Methods
+      %br
+      .alert.alert-info
+        %strong Note:
+        You must init the multiple select with $('#your-select').multiSelect() before calling one of the following methods.
+      %h4 .multiSelect(options)
+      %p
+        Activates your content as a multiselect. Accepts an optional options.
+        %code object
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect({});
+      %h4 .multiSelect('select', 'value')
+      %p
+        Select the item with the value given in parameter.
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect('select', 'value');
+      %h4 .multiSelect('deselect', 'value')
+      %p
+        Deselect the item with the value given in parameter.
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect('deselect', 'value');
+      %h4 .multiSelect('select_all', boolean)
+      %p
+        Select all elements. If parameter visible set to true, it will select only visible items. Otherwise it will also select hidden ones.
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect('select_all', true);
+      %h4 .multiSelect('deselect_all')
+      %p
+        Deselect all items previously selected.
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect('select_all');
+      %h4 .multiSelect('refresh')
+      %p
+        Refresh current multiselect.
+      %pre
+        %code{ :'data-language' => 'javascript' }
+          = preserve do
+            :escaped
+              $('#your-select').multiSelect('refresh');                 
+      %br
+      .page-header#demos
+        %h2 Demos
+      .row
+        .span12
+          %h3 Pre-selected options
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='pre-selected-options' multiple='multiple'>
+                    <option value='fr' selected='selected'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us' selected='selected'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#pre-selected-options').multiSelect();
+        .span5
+          = select_tag('pre-selected-options', :options => countries, :selected => ['fr', 'us'], :multiple => 'multiple', :id => 'pre-selected-options', :class => 'multiselect')
+      %br
+      .row
+        .span12
+          %h3 Callbacks
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='Callbacks' multiple='multiple'>
+                    <option value='fr' selected='selected'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us' selected='selected'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#callbacks').multiSelect({
+                    afterSelect: function(value, text){
+                      alert("Select value: "+value);
+                    },
+                    afterDeselect: function(value, text){
+                      alert("Deselect value: "+value);
+                    }
+                  });
+        .span5
+          = select_tag('callbacks', :options => countries, :multiple => 'multiple', :id => 'callbacks')
+      %br
+      .row
+        .span12
+          %h3 Plublic methods
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <a href='#' id='select-all'>select all</a>
+                  <a href='#' id='deselect-all'>deselect all</a>
+                  <a href='#' id='select-fr'>select France</a>
+                  <a href='#' id='deselect-fr'>deselect France</a>
+                  <select id='public-methods' multiple='multiple'>
+                    <option value='fr' selected='selected'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us' selected='selected'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#public-methods').multiSelect();
+                  $('select-all').click(function(){
+                    $('#public-methods').multiSelect('select_all');
+                    return false;
+                  });
+                  $('deselect-all').click(function(){
+                    $('#public-methods').multiSelect('deselect_all');
+                    return false;
+                  });
+                  $('select-fr').click(function(){
+                    $('#public-methods').multiSelect('select', 'fr');
+                    return false;
+                  });
+                  $('deselect-fr').click(function(){
+                    $('#public-methods').multiSelect('deselect', 'fr');
+                    return false;
+                  });
+        .span5
+          = link_to 'select all', nil, :id => 'select-all'
+          &middot;
+          = link_to 'deselect all', nil, :id => 'deselect-all'
+          &middot;
+          = link_to 'select France', nil, :id => 'select-fr'
+          &middot;
+          = link_to 'deselect France', nil, :id => 'deselect-fr'
+          %br
+          = select_tag('public-methods', :options => countries, :multiple => 'multiple', :id => 'public-methods')           
+      %br
+      .row
+        .span12
+          %h3 Keep order
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='keep-order' multiple='multiple'>
+                    <option value='fr'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#keep-order').multiSelect({
+                    keepOrder: true
+                  });
+        .span5
+          = select_tag('keep-order', :options => countries, :multiple => 'multiple', :id => 'keep-order')
+      %br
+      .row
+        .span12
+          %h3 Optgroup
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='optgroup' multiple='multiple'>
+                    <optgroup label='Friends'>
+                      <option value='1'>Yoda</option>
+                      <option value='2'>Obiwan</option>
+                    </optgroup>
+                    <optgroup label='Enemies'>
+                      <option value='3'>Palpatine</option>
+                      <option value='4'>Darth Vader</option>
+                    </optgroup>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#optgroup').multiSelect();
+        .span5
+          = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]}, :multiple => 'multiple', :id => 'optgroup', :class => 'multiselect')
+      %br
+      .row
+        .span12
+          %h3 Disabled attribute
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='disabled-attribute' disabled='disabled' multiple='multiple'>
+                    <option value='fr'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#disabled-attribute').multiSelect();
+        .span5
+          = select_tag('disabled-attribute', :options => countries, :multiple => 'multiple', :disabled => 'disabled', :id => 'disable-attribute', :class => 'multiselect')
+        .span12
+          .alert.alert-info
+            %strong Note:
+            You can also deactivate option one by one by adding disabled attribute to each option you want to disable
+            %br
+            %code
+              = preserve do
+                :escaped
+                  <option value='fuu' disabled='disabled'>bar</option>
+      %br
+      .row
+        .span12
+          %h3 Custom headers
+        .span7
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='custom-headers' multiple='multiple'>
+                    <option value='fr'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#custom-headers').multiSelect({
+                    selectableHeader: "<div class='custom-header'>Selectable item</div>",
+                    selectedHeader: "<div class='custom-header'>Selected items</div>"
+                  });
+        .span5
+          = select_tag('custom-headers', :options => countries, :multiple => 'multiple', :id => 'custom-headers')
+      .page-header#project
+        %h2 Project
+      .row
+        .span12
+          .well.github
+            Github url:
+            = link_to "https://github.com/lou/multi-select", :target => '_blank'
+            - if @repo
+              %span
+                (
+                %strong= @repo['watchers']
+                watchers
+                )
+      .row
+        .span6
+          %h3 Contributors
+          %ul.contributors
+            - if @contributors
+              - @contributors.each do |c|
+                %li
+                  - if c['avatar_url']
+                    = image_tag c['avatar_url'], width: '35px', height: '35px'
+                  = link_to c['login'], "https://github.com/#{c['login']}", :target => '_blank'
+                  = "( #{c['contributions']} contribution#{ 's' if c['contributions'] != 1 } )"
+            - else
+              Sorry, I can't fetch data from github API, you should reload this page!
+        .span6
+          %h3 How to contribute?
+          %ul.contribute
+            %li
+              Fork the project 
+              = link_to "https://github.com/lou/multi-select", :target => '_blank'
+            %li Make your feature addition or bug fix.
+            %li Commit your change.
+            %li Send me a pull request. Bonus points for topic branches.
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+      %br
+    = javascript_include_tag 'jquery', 'bootstrap', 'jquery.quicksearch', 'jquery.multiselect', 'rainbow', 'application'
