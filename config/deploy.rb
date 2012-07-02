@@ -2,7 +2,7 @@ require "bundler/capistrano"
 
 set :application, "multiselect"
 set :repository,  "git@github.com:lou/multiselect-website.git"
-
+set :rvm_ruby_string, '1.9.3@multiselect' 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
