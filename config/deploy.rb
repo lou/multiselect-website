@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "multiselect"
 set :repository,  "git@github.com:lou/multiselect-website.git"
 
