@@ -175,6 +175,29 @@
             :escaped
               $('#your-select').multiSelect('refresh');                 
       %br
+      %h3 Keyboard
+      %table.table.table-bordered.table-striped
+        %thead
+          %tr
+            %th{ width: 120} key
+            %th function
+        %tbody
+          %tr
+            %td [&nbsp;&nbsp;&darr;&nbsp;&nbsp;]&nbsp;&nbsp;Down arrow
+            %td Select next item in the focused list
+          %tr
+            %td [&nbsp;&nbsp;&uarr;&nbsp;&nbsp;]&nbsp;&nbsp;Up arrow
+            %td Select previous item in the focused list
+          %tr
+            %td [&nbsp;&#8212;&nbsp;]&nbsp;&nbsp;Space
+            %td Add/remove item depending on which list is focused
+          %tr
+            %td [ &larr; ]&nbsp;&nbsp;Left arrow
+            %td Focus on the next list
+          %tr
+            %td [ &rarr; ]&nbsp;&nbsp;Right arrow
+            %td Focus on the previous list
+      %br
       .page-header#demos
         %h2 Demos
       .row
@@ -399,7 +422,7 @@
       .row
         .span6
           - if @contributors
-            %h3 Contributors - #{@contributors.size}
+            %h3 #{@contributors.size} Contributors
             %ul.contributors
               - if @contributors
                 - @contributors.each do |c|
@@ -407,7 +430,7 @@
                     - if c['avatar_url']
                       = image_tag c['avatar_url'], width: '35px', height: '35px'
                     = link_to c['login'], "https://github.com/#{c['login']}", :target => '_blank'
-                    = "( #{c['contributions']} contribution#{ 's' if c['contributions'] != 1 } )"
+                    = "- #{c['contributions']} contribution#{ 's' if c['contributions'] != 1 }"
           - else
             Sorry, I can't fetch data from github API, you should reload this page!
         .span6
