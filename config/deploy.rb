@@ -15,7 +15,7 @@ set :deploy_to, '/home/lou/data/multiselect'
 role :app, "zorcery.net"                          # This may be the same as your `Web` server
 
 task :link_images do
-  run "ln -s #{shared_path}/public/images #{release_path}/images"
+  run "ln -s #{shared_path}/images #{release_path}/images"
 end
 
 after "deploy:update_code", :link_images
