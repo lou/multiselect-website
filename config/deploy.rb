@@ -14,12 +14,6 @@ set :deploy_to, '/home/lou/data/multiselect'
 # role :web, "your web-server here"                          # Your HTTP server, Apache/etc
 role :app, "zorcery.net"                          # This may be the same as your `Web` server
 
-task :link_images do
-  run "ln -s #{shared_path}/images #{release_path}/images"
-end
-
-after "deploy:update_code", :link_images
-
 # role :db,  "your primary db-server here", :primary => true # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
 
