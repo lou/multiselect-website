@@ -35,17 +35,17 @@ role :app, "zorcery.net"                          # This may be the same as your
 namespace :deploy do
   desc "Start the Thin processes"
   task :start do
-    exec "bundle exec thin start -C ../../../../thin.yml"
+    exec "bundle exec thin start -C ../../../thin.yml"
   end
 
   desc "Stop the Thin processes"
   task :stop do
-    exec "bundle exec thin stop -C ../../../../thin.yml"
+    exec "bundle exec thin stop -C ../../../thin.yml"
   end
 
   desc "Restart the Thin processes"
   task :restart do
-    exec "bundle exec thin stop -C ../../../../thin.yml"
-    exec "bundle exec thin start -C ../../../../thin.yml"
+    exec "bundle exec thin stop -C ../../../thin.yml"
+    exec "bundle exec thin start -C ../../../thin.yml"
   end
 end
