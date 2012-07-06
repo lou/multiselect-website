@@ -47,3 +47,4 @@ namespace :deploy do
   task :restart do
     sudo "bundle exec thin restart -C /home/lou/thin.yml"
   end
+end
