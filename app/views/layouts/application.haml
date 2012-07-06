@@ -398,17 +398,18 @@
                 )
       .row
         .span6
-          %h3 Contributors
-          %ul.contributors
-            - if @contributors
-              - @contributors.each do |c|
-                %li
-                  - if c['avatar_url']
-                    = image_tag c['avatar_url'], width: '35px', height: '35px'
-                  = link_to c['login'], "https://github.com/#{c['login']}", :target => '_blank'
-                  = "( #{c['contributions']} contribution#{ 's' if c['contributions'] != 1 } )"
-            - else
-              Sorry, I can't fetch data from github API, you should reload this page!
+          - if @contributors
+            %h3 Contributors - #{@contributors.size}
+            %ul.contributors
+              - if @contributors
+                - @contributors.each do |c|
+                  %li
+                    - if c['avatar_url']
+                      = image_tag c['avatar_url'], width: '35px', height: '35px'
+                    = link_to c['login'], "https://github.com/#{c['login']}", :target => '_blank'
+                    = "( #{c['contributions']} contribution#{ 's' if c['contributions'] != 1 } )"
+          - else
+            Sorry, I can't fetch data from github API, you should reload this page!
         .span6
           %h3 How to contribute?
           %ul.contribute
