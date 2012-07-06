@@ -58,12 +58,20 @@
         %code{ :'data-language' => 'html' }
           = preserve do
             :escaped
-              <select multiple="multiple" id="countries" name="countries[]">
-                <option value="fr">France</option>
-                <option value="uk">United Kingdom</option>
-                <option value="us">United States</option>
-                <option value="ch">China</option>
-              </select>
+              <html>
+                <head>
+                  <link href="path/to/multiselect.css" media="screen" rel="stylesheet" type="text/css">
+                </head>
+                <body>
+                  <select multiple="multiple" id="countries" name="countries[]">
+                    <option value="fr">France</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="us">United States</option>
+                    <option value="ch">China</option>
+                  </select>
+                  <script src="path/to/jquery.multi-select.js" type="text/javascript"></script>
+                </body>
+              </html>
       %br
       %h3
         JavaScript
@@ -113,9 +121,6 @@
             %td CSS class for disabled items
       %h3 Methods
       %br
-      .alert.alert-info
-        %strong Note:
-        You must init the multiple select with $('#your-select').multiSelect() before calling one of the following methods.
       %h4 .multiSelect(options)
       %p
         Activates your content as a multiselect. Accepts an optional options
@@ -125,6 +130,10 @@
           = preserve do
             :escaped
               $('#your-select').multiSelect({});
+      %br
+      .alert.alert-info
+        %strong Note:
+        You must init the multiple select with $('#your-select').multiSelect() before calling one of the following methods.
       %h4 .multiSelect('select', 'value')
       %p
         Select the item with the value given in parameter.
