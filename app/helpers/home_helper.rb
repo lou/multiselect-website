@@ -6,7 +6,19 @@ Multiselect.helpers do
       ['France', "fr"],
       ['United Kingdom', "uk"],
       ['United States', "us"],
-      ['China', "ch"]
+      ['China', "ch"],
+      ['Australia', "au"],
+      ['India', "in"],
+      ['Argentina', "ar"],
+      ['Brazil', "br"],
+      ['Tibet', "tb"],
+      ['Columbia', "co"],
+      ['Croatia', "cr"],
+      ['Italia', "it"],
+      ['Espana', "es"],
+      ['Indonesia', "id"],
+      ['Germany', "du"],
+      ['Norway', "no"]
     ]
     array.map{ |a| ['europe', a]} if optgroup
     array
