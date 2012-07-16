@@ -34,3 +34,28 @@ ul.contribute li{
   background: #000;
   color: #fff;
 }
+
+h2{
+  margin-top: 2em;
+}
+
+h3{
+  margin: 1em 0;
+}
+
+h4{
+  margin-top: 2em;
+}
+
+#ms-searchable .ms-selection{
+  margin-top: 32px;
+}
+
+#ms-searchable.ms-container{
+  background-position: 164px 110px;
+}
+
+#search{
+  width: 152px;
+  margin-bottom: 5px;
+}
