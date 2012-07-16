@@ -35,7 +35,7 @@ role :app, "zorcery.net"                          # This may be the same as your
 namespace :deploy do
   desc "Restart the Thin processes"
   task :restart do
-    exec "bundle exec thin stop -C /home/lou/thin.yml"
-    exec "bundle exec thin start -C /home/lou/thin.yml"
+    exec "bundle exec thin stop -C #{deploy_to}/thin.yml"
+    exec "bundle exec thin start -C #{deploy_to}/thin.yml"
   end
 end
