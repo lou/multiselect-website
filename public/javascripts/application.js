@@ -7,6 +7,21 @@
       keepOrder: true
     });
 
+    $('#searchable').multiSelect({
+      selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='country name'>"
+    });
+
+
+    $('#search').quicksearch($('li', '#ms-searchable' )).on('keydown', function(e){
+      if (e.keyCode == 40){
+        $(this).trigger('focusout');
+        $('#searchable').focus();
+        return false;
+      }
+    });
+
+    $('#optgroup').multiSelect({});
+
     $('#custom-headers').multiSelect({
       selectableHeader: "<div class='custom-header'>Selectable item</div>",
       selectedHeader: "<div class='custom-header'>Selected items</div>"

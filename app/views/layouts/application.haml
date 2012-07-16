@@ -415,6 +415,50 @@
                   });
         .span5
           = select_tag('custom-headers', :options => countries, :multiple => 'multiple', :id => 'custom-headers')
+      %br
+      .row
+        .span12
+          %h3 Searchable
+        .span12
+          = select_tag('searchable', :options => countries, :multiple => 'multiple', :id => 'searchable')
+          %br
+        .span12
+          .alert.alert-info
+            %strong Note:
+            This feature is not built-in but depends on an other plugin.
+            %br
+            I personnally use the excellent quicksearch library, but you can use whatever library you like.
+        .span12
+          %pre
+            %code{ :'data-language' => 'html' }
+              = preserve do
+                :escaped
+                  <select id='searchable' multiple='multiple'>
+                    <option value='fr'>France</option>
+                    <option value='uk'>United Kingdom</option>
+                    <option value='us'>United States</option>
+                    <option value='ch'>China</option>
+                  </select>
+                  <script src="path/to/jquery.multi-select.js" type="text/javascript"></script>
+                  <script src="path/to/jquery.quicksearch.js" type="text/javascript"></script>
+
+          %pre
+            %code{ :'data-language' => 'javascript' }
+              = preserve do
+                :escaped
+                  $('#searchable').multiSelect({
+                    selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='country name'>"
+                  });
+
+                  $('#search').quicksearch(
+                    $('li', '#ms-searchable' )).on('keydown', function(e){
+                      if (e.keyCode == 40){
+                        $(this).trigger('focusout');
+                        $('#searchable').focus();
+                        return false;
+                      }
+                    }
+                  );
       .page-header#project
         %h2 Project
       .row
