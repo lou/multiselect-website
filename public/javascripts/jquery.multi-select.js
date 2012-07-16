@@ -144,7 +144,7 @@
               } else {
                 scroll -= liHeight;
               }
-              $('.'+keyContainer+' ul').scrollTop(scroll);
+              $('.'+keyContainer+' ul', container).scrollTop(scroll);
             } else if (e.keyCode == 37 || e.keyCode == 39){ // Right and Left
               if (selectableUl.hasClass('ms-focus')){
                 selectableUl.focusout();
