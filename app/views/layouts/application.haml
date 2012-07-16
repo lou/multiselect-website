@@ -420,14 +420,15 @@
         .span12
           %h3 Searchable
         .span12
-          = select_tag('searchable', :options => countries, :multiple => 'multiple', :id => 'searchable')
-          %br
-        .span12
-          .alert.alert-info
+          .alert.info
             %strong Note:
             This feature is not built-in but depends on an other plugin.
-            %br
-            I personnally use the excellent quicksearch library, but you can use whatever library you like.
+            I personnally use the excellent 
+            = link_to 'quicksearch', 'https://github.com/riklomas/quicksearch', :target => '_blank'
+            library, but you can use whatever library you like.
+        .span12
+          = select_tag('searchable', :options => countries, :multiple => 'multiple', :id => 'searchable')
+          %br
         .span12
           %pre
             %code{ :'data-language' => 'html' }
@@ -505,4 +506,4 @@
       %br
       %br
       %br
-    = javascript_include_tag 'jquery', 'bootstrap', 'jquery.quicksearch', 'https://raw.github.com/lou/multi-select/master/js/jquery.multi-select.js', 'rainbow', 'application'
+    = javascript_include_tag 'jquery', 'bootstrap', 'https://raw.github.com/riklomas/quicksearch/master/jquery.quicksearch.js', 'https://raw.github.com/lou/multi-select/master/js/jquery.multi-select.js', 'rainbow', 'application'
