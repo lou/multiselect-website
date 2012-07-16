@@ -207,7 +207,6 @@
           %tr
             %td [ &rarr; ]&nbsp;&nbsp;Right arrow
             %td Focus on the previous list
-      %br
       .page-header#demos
         %h2 Demos
       .row
@@ -359,10 +358,10 @@
                 :escaped
                   $('#optgroup').multiSelect();
         .span5
-          = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]}, :multiple => 'multiple', :id => 'optgroup', :class => 'multiselect')
+          = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]}, :multiple => 'multiple', :id => 'optgroup')
       %br
       .row
-        .span12
+        .span12.title
           %h3 Disabled attribute
         .span7
           %pre
