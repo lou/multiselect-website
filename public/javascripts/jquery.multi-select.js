@@ -1,11 +1,12 @@
 /*
-* MultiSelect v0.7
+* MultiSelect v0.8
 * Copyright (c) 2012 Louis Cuny
 *
-* Dual licensed under the MIT and GPL licenses:
-*    http://www.opensource.org/licenses/mit-license.php
-*    http://www.gnu.org/licenses/gpl.html
-*
+* This program is free software. It comes without any warranty, to
+* the extent permitted by applicable law. You can redistribute it
+* and/or modify it under the terms of the Do What The Fuck You Want
+* To Public License, Version 2, as published by Sam Hocevar. See
+* http://sam.zoy.org/wtfpl/COPYING for more details.
 */
 
 (function($){
@@ -21,7 +22,7 @@
       }
       var multiSelects = this;
       multiSelects.css('position', 'absolute').css('left', '-9999px');
-      multiSelects.each(function(){
+      return multiSelects.each(function(){
         var ms = $(this);
 
         if (ms.next('.ms-container').length == 0){
@@ -79,7 +80,7 @@
             ms.multiSelect('select', $(this).val(), 'init');
           });
 
-          $('.ms-elem-selectable', container).on('mouseenter', function(){
+          $('.ms-elem-selectable', selectableUl).on('mouseenter', function(){
             $('li', container).removeClass('ms-hover');
             $(this).addClass('ms-hover');
           }).on('mouseout', function(){
@@ -90,6 +91,7 @@
 
           selectableUl.on('focusin', function(){
             $(this).addClass('ms-focus');
+            selectedUl.focusout();
           }).on('focusout', function(){
             $(this).removeClass('ms-focus');
             $('li', container).removeClass('ms-hover');
@@ -183,19 +185,19 @@
           haveToSelect = null;
 
       if (method == 'init'){
-        haveToSelect = !selectableLi.hasClass(ms.data('settings').disabledClass) && selectedOption.attr('selected');
+        haveToSelect = !selectableLi.hasClass(ms.data('settings').disabledClass) && selectedOption.prop('selected');
       } else {
         haveToSelect = !selectableLi.hasClass(ms.data('settings').disabledClass);
+        ms.focus();
       }
       if (haveToSelect && value && value != '' && selectedUl.children('li[ms-value="'+value+'"]').length == 0){
-        ms.focus();
         var parentOptgroup = selectableLi.parent('.ms-optgroup');
         if (parentOptgroup.length > 0)
           if (parentOptgroup.children('.ms-elem-selectable:not(:hidden)').length == 1)
             parentOptgroup.children('.ms-optgroup-label').hide();
         selectableLi.addClass('ms-selected');
         selectableLi.hide();
-        selectedOption.attr('selected', 'selected');
+        selectedOption.prop('selected', true);
         if(titleAttr){
           selectedLi.attr('title', titleAttr)
         }
@@ -238,7 +240,7 @@
           $('li', selectedUl).removeClass('ms-hover');
         });
         if (ms.find("option[value='']")){
-          ms.find("option[value='']").removeAttr('selected');
+          ms.find("option[value='']").prop('selected', false);
         }
         if (method == "select_all" && parentOptgroup.children('.ms-elem-selectable').length > 0){
           parentOptgroup.children('.ms-optgroup-label').hide();
@@ -272,7 +274,7 @@
           parentOptgroup.children('.ms-optgroup-label').addClass('ms-collapse').show();
           parentOptgroup.children('.ms-elem-selectable:not(.ms-selected)').show();
         }
-        selectedOption.removeAttr('selected');
+        selectedOption.prop('selected', false);
         selectableLi.show();
         selectableLi.removeClass('ms-selected');
         selectedLi.remove();
