@@ -20,9 +20,7 @@
         .container
           = link_to '#home', :class => 'brand' do
             multiselect.js
-            %small
-              0.9
-
+            %span 0.9
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -30,7 +28,7 @@
               %li= link_to 'Demos', '#demos'
               %li= link_to 'Project', '#project'
           .nav.pull-right
-            = link_to 'Download', 'https://github.com/lou/multi-select/zipball/master', :class => 'btn btn-success'
+            = link_to 'Download', 'https://github.com/lou/multi-select/zipball/master', :class => 'btn btn-primary'
     .container
       .hero-unit#home
         %h1 Multiselect
@@ -61,10 +59,10 @@
               %strong CSS
             %li
               Depends on
-              %strong jQuery 1.7+
+              %strong jQuery 1.8+
             %li
               Tiny code
-              %strong ~9kb
+              %strong ~8kb
               minified
           .hero-multiselect
             = select_tag 'test', :options => select_options, :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
@@ -80,7 +78,7 @@
                   <link href="path/to/multiselect.css" media="screen" rel="stylesheet" type="text/css">
                 </head>
                 <body>
-                  <select multiple="multiple" id="countries" name="countries[]">
+                  <select multiple="multiple" id="my-select" name="my-select[]">
                     <option value='elem_1'>elem 1</option>
                     <option value='elem_2'>elem 2</option>
                     <option value='elem_3'>elem 3</option>
@@ -97,7 +95,7 @@
         %code{ :'data-language' => 'javascript' }
           = preserve do
             :escaped
-              $('#countries').multiSelect()
+              $('#my-select').multiSelect()
       %h3 Options
       %table.table.table-bordered.table-striped
         %thead
@@ -317,7 +315,14 @@
           &middot;
           = link_to 'deselect 100 elems', nil, :id => 'deselect-100'
           %br
-          = select_tag('public-methods', :options => select_options(1000), :multiple => 'multiple', :id => 'public-methods')           
+          %br
+          = select_tag('public-methods', :options => select_options(1000), :multiple => 'multiple', :id => 'public-methods')
+          %br
+          %p
+            In this example there are
+            %strong
+              1000
+            elements           
       %br
       .row
         .span12

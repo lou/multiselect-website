@@ -1,7 +1,20 @@
-.brand small{
-  font-size: 0.6em;
-  color: #ddd;
+.navbar .brand{
+  padding: 9px 20px 8px;
 }
+
+.brand span{
+  font-size: 0.6em;
+  color: #aaa;
+}
+
+ .hero-unit .ms-container ul.ms-list{
+  height: 250px;
+}
+
+ .hero-unit .ms-container{
+  background-position: 165px 110px;
+}
+
 .hero-unit .container:after{
   content: "."; display: block; height: 0; line-height: 0; font-size: 0; clear: both; min-height: 0; visibility: hidden;
 }
@@ -9,6 +22,9 @@
 .hero-unit ul{
   float: left;
 }
+
+ .hero-unit li{}
+
 .hero-multiselect{
   float: right;
 }
