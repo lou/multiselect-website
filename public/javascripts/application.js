@@ -11,8 +11,7 @@
       selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='country name'>"
     });
 
-
-    $('#search').quicksearch($('li', '#ms-searchable' )).on('keydown', function(e){
+    $('#search').quicksearch($('.ms-elem-selectable', '#ms-searchable' )).on('keydown', function(e){
       if (e.keyCode == 40){
         $(this).trigger('focusout');
         $('#searchable').focus();
@@ -20,11 +19,12 @@
       }
     });
 
+    
     $('#optgroup').multiSelect({});
 
     $('#custom-headers').multiSelect({
       selectableHeader: "<div class='custom-header'>Selectable item</div>",
-      selectedHeader: "<div class='custom-header'>Selected items</div>"
+      selectionHeader: "<div class='custom-header'>Selected items</div>"
     });
 
     $('#callbacks').multiSelect({
@@ -45,12 +45,19 @@
       $('#public-methods').multiSelect('deselect_all');
       return false;
     });
-    $('#select-fr').click(function(){
-      $('#public-methods').multiSelect('select', 'fr');
+
+    var arr = [];
+
+    for (var i = 0; i < 100; i++){
+      arr[i] = 'elem_'+(i+1);
+    }
+
+    $('#select-100').click(function(){
+      $('#public-methods').multiSelect('select', arr);
       return false;
     });
-    $('#deselect-fr').click(function(){
-      $('#public-methods').multiSelect('deselect', 'fr');
+    $('#deselect-100').click(function(){
+      $('#public-methods').multiSelect('deselect', arr);
       return false;
     }); 
   });

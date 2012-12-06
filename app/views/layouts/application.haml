@@ -18,7 +18,11 @@
     .navbar.navbar-fixed-top#navbar
       .navbar-inner
         .container
-          = link_to 'multiselect.js', '#home', :class => 'brand'
+          = link_to '#home', :class => 'brand' do
+            multiselect.js
+            %small
+              0.9
+
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -63,7 +67,7 @@
               %strong ~9kb
               minified
           .hero-multiselect
-            = select_tag 'test', :options => countries, :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
+            = select_tag 'test', :options => select_options, :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
       .page-header#usage
         %h2 Usage
       %h3 HTML
@@ -77,10 +81,12 @@
                 </head>
                 <body>
                   <select multiple="multiple" id="countries" name="countries[]">
-                    <option value="fr">France</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="us">United States</option>
-                    <option value="ch">China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_100'>elem 100</option>
                   </select>
                   <script src="path/to/jquery.multi-select.js" type="text/javascript"></script>
                 </body>
@@ -104,12 +110,12 @@
           %tr
             %td afterSelect
             %td function
-            %td function(value, text){}
+            %td function(value){}
             %td Function to call after one item is selected.
           %tr
             %td afterDeselect
             %td function
-            %td function(value, text){}
+            %td function(value){}
             %td Function to call after one item is deselected.
           %tr
             %td selectableHeader
@@ -117,15 +123,10 @@
             %td null
             %td Text or HTML to display on the selectable container.
           %tr
-            %td selectedHeader
+            %td selectionHeader
             %td HTML/Text
             %td null
             %td Text or HTML to display on the selected container.
-          %tr
-            %td keepOrder
-            %td Boolean
-            %td false
-            %td If set to true, it will keep the initial list order. Otherwise it will add item in the selected order.
           %tr
             %td disabledClass
             %td String
@@ -146,30 +147,30 @@
       .alert.alert-info
         %strong Note:
         You must init the multiple select with $('#your-select').multiSelect() before calling one of the following methods.
-      %h4 .multiSelect('select', 'value')
+      %h4 .multiSelect('select', String|Array)
       %p
-        Select the item with the value given in parameter.
+        Select the item with the value given in parameter. The value can be either a string ('elem_1') matching the value of the option oran Array of values (['elem_1', 'elem_42']). 
       %pre
         %code{ :'data-language' => 'javascript' }
           = preserve do
             :escaped
-              $('#your-select').multiSelect('select', 'value');
-      %h4 .multiSelect('deselect', 'value')
+              $('#your-select').multiSelect('select', String|Array);
+      %h4 .multiSelect('deselect', String|Array)
       %p
-        Deselect the item with the value given in parameter.
+        Deselect the item with the value given in parameter. The value can be either a string ('elem_1') matching the value of the option oran Array of values (['elem_1', 'elem_42']).
       %pre
         %code{ :'data-language' => 'javascript' }
           = preserve do
             :escaped
-              $('#your-select').multiSelect('deselect', 'value');
-      %h4 .multiSelect('select_all', boolean)
+              $('#your-select').multiSelect('deselect', String|Array);
+      %h4 .multiSelect('select_all')
       %p
-        Select all elements. If parameter visible set to true, it will select only visible items. Otherwise it will also select hidden ones.
+        Select all elements.
       %pre
         %code{ :'data-language' => 'javascript' }
           = preserve do
             :escaped
-              $('#your-select').multiSelect('select_all', true);
+              $('#your-select').multiSelect('select_all');
       %h4 .multiSelect('deselect_all')
       %p
         Deselect all items previously selected.
@@ -220,10 +221,12 @@
               = preserve do
                 :escaped
                   <select id='pre-selected-options' multiple='multiple'>
-                    <option value='fr' selected='selected'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us' selected='selected'>United States</option>
-                    <option value='ch'>China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_100'>elem 100</option>
                   </select>
           %pre
             %code{ :'data-language' => 'javascript' }
@@ -231,7 +234,7 @@
                 :escaped
                   $('#pre-selected-options').multiSelect();
         .span5
-          = select_tag('pre-selected-options', :options => countries, :selected => ['fr', 'us'], :multiple => 'multiple', :id => 'pre-selected-options', :class => 'multiselect')
+          = select_tag('pre-selected-options', :options => select_options, :selected => ['elem_1', 'elem_42'], :multiple => 'multiple', :id => 'pre-selected-options', :class => 'multiselect')
       %br
       .row
         .span12
@@ -242,10 +245,12 @@
               = preserve do
                 :escaped
                   <select id='Callbacks' multiple='multiple'>
-                    <option value='fr'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us'>United States</option>
-                    <option value='ch'>China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_100'>elem 100</option>
                   </select>
           %pre
             %code{ :'data-language' => 'javascript' }
@@ -260,7 +265,7 @@
                     }
                   });
         .span5
-          = select_tag('callbacks', :options => countries, :multiple => 'multiple', :id => 'callbacks')
+          = select_tag('callbacks', :options => select_options, :multiple => 'multiple', :id => 'callbacks')
       %br
       .row
         .span12
@@ -272,13 +277,15 @@
                 :escaped
                   <a href='#' id='select-all'>select all</a>
                   <a href='#' id='deselect-all'>deselect all</a>
-                  <a href='#' id='select-fr'>select France</a>
-                  <a href='#' id='deselect-fr'>deselect France</a>
+                  <a href='#' id='select-100'>select 100 elems</a>
+                  <a href='#' id='deselect-100'>deselect 100 elems</a>
                   <select id='public-methods' multiple='multiple'>
-                    <option value='fr'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us'>United States</option>
-                    <option value='ch'>China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_1000'>elem 100</option>
                   </select>
           %pre
             %code{ :'data-language' => 'javascript' }
@@ -294,11 +301,11 @@
                     return false;
                   });
                   $('select-fr').click(function(){
-                    $('#public-methods').multiSelect('select', 'fr');
+                    $('#public-methods').multiSelect('select', ['elem_0', 'elem_1' ..., 'elem_99']);
                     return false;
                   });
                   $('deselect-fr').click(function(){
-                    $('#public-methods').multiSelect('deselect', 'fr');
+                    $('#public-methods').multiSelect('deselect', ['elem_0', 'elem_1' ..., 'elem_99']);
                     return false;
                   });
         .span5
@@ -306,35 +313,11 @@
           &middot;
           = link_to 'deselect all', nil, :id => 'deselect-all'
           &middot;
-          = link_to 'select France', nil, :id => 'select-fr'
+          = link_to 'select 100 elems', nil, :id => 'select-100'
           &middot;
-          = link_to 'deselect France', nil, :id => 'deselect-fr'
+          = link_to 'deselect 100 elems', nil, :id => 'deselect-100'
           %br
-          = select_tag('public-methods', :options => countries, :multiple => 'multiple', :id => 'public-methods')           
-      %br
-      .row
-        .span12
-          %h3 Keep order
-        .span7
-          %pre
-            %code{ :'data-language' => 'html' }
-              = preserve do
-                :escaped
-                  <select id='keep-order' multiple='multiple'>
-                    <option value='fr'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us'>United States</option>
-                    <option value='ch'>China</option>
-                  </select>
-          %pre
-            %code{ :'data-language' => 'javascript' }
-              = preserve do
-                :escaped
-                  $('#keep-order').multiSelect({
-                    keepOrder: true
-                  });
-        .span5
-          = select_tag('keep-order', :options => countries, :multiple => 'multiple', :id => 'keep-order')
+          = select_tag('public-methods', :options => select_options(1000), :multiple => 'multiple', :id => 'public-methods')           
       %br
       .row
         .span12
@@ -360,7 +343,7 @@
                 :escaped
                   $('#optgroup').multiSelect();
         .span5
-          = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]}, :multiple => 'multiple', :id => 'optgroup')
+          = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]} , :selected => [2, 4], :multiple => 'multiple', :id => 'optgroup')
       %br
       .row
         .span12.title
@@ -371,10 +354,12 @@
               = preserve do
                 :escaped
                   <select id='disabled-attribute' disabled='disabled' multiple='multiple'>
-                    <option value='fr'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us'>United States</option>
-                    <option value='ch'>China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_100'>elem 100</option>
                   </select>
           %pre
             %code{ :'data-language' => 'javascript' }
@@ -382,7 +367,7 @@
                 :escaped
                   $('#disabled-attribute').multiSelect();
         .span5
-          = select_tag('disabled-attribute', :options => countries, :multiple => 'multiple', :disabled => 'disabled', :id => 'disable-attribute', :class => 'multiselect')
+          = select_tag('disabled-attribute', :options => select_options, :multiple => 'multiple', :disabled => 'disabled', :id => 'disable-attribute', :class => 'multiselect')
         .span12
           .alert.alert-info
             %strong Note:
@@ -402,10 +387,12 @@
               = preserve do
                 :escaped
                   <select id='custom-headers' multiple='multiple'>
-                    <option value='fr'>France</option>
-                    <option value='uk'>United Kingdom</option>
-                    <option value='us'>United States</option>
-                    <option value='ch'>China</option>
+                    <option value='elem_1'>elem 1</option>
+                    <option value='elem_2'>elem 2</option>
+                    <option value='elem_3'>elem 3</option>
+                    <option value='elem_4'>elem 4</option>
+                    ...
+                    <option value='elem_100'>elem 100</option>
                   </select>
           %pre
             %code{ :'data-language' => 'javascript' }
@@ -413,10 +400,10 @@
                 :escaped
                   $('#custom-headers').multiSelect({
                     selectableHeader: "<div class='custom-header'>Selectable item</div>",
-                    selectedHeader: "<div class='custom-header'>Selected items</div>"
+                    selectionHeader: "<div class='custom-header'>Selected items</div>"
                   });
         .span5
-          = select_tag('custom-headers', :options => countries, :multiple => 'multiple', :id => 'custom-headers')
+          = select_tag('custom-headers', :options => select_options, :multiple => 'multiple', :id => 'custom-headers')
       %br
       .row
         .span12
@@ -429,7 +416,7 @@
             = link_to 'quicksearch', 'https://github.com/riklomas/quicksearch', :target => '_blank'
             library, but you can use whatever library you like.
         .span12
-          = select_tag('searchable', :options => countries, :multiple => 'multiple', :id => 'searchable')
+          = select_tag('searchable', :options => select_options, :multiple => 'multiple', :id => 'searchable')
           %br
         .span12
           %pre

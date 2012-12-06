@@ -1,11 +1,10 @@
 Multiselect.controllers :home do
 
   get :index, :map => '/' do
-    begin
-      @repo = HTTParty.get('https://api.github.com/repos/lou/multi-select').parsed_response
-      @contributors = HTTParty.get('https://api.github.com/repos/lou/multi-select/contributors').parsed_response
-    rescue
-    end
+      res = HTTParty.get('https://api.github.com/repos/lou/multi-select')
+      @repo = res.parsed_response if res.code == 200
+      res = HTTParty.get('https://api.github.com/repos/lou/multi-select/contributors')
+      @contributors = res.parsed_response if res.code == 200
     render 'home/index'
   end
 
