@@ -15,6 +15,8 @@ gem 'haml'
 # Padrino Stable Gem
 gem 'padrino'
 gem 'httparty'
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 # Or Padrino Edge
 # gem 'padrino', :git => 'git://github.com/padrino/padrino-framework.git'
