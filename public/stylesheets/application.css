@@ -15,15 +15,9 @@
   background-position: 165px 110px;
 }
 
-.hero-unit .container:after{
-  content: "."; display: block; height: 0; line-height: 0; font-size: 0; clear: both; min-height: 0; visibility: hidden;
-}
-
-.hero-unit ul{
+.hero-unit ul.describe{
   float: left;
 }
-
- .hero-unit li{}
 
 .hero-multiselect{
   float: right;

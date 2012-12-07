@@ -35,7 +35,7 @@
         %p
           This plugin is a drop-in replacement for the standard &lt;select&gt; element with multiple attribute activated.
         .row
-          %ul
+          %ul.describe
             %li
               %strong Free
               (under
@@ -65,7 +65,7 @@
               %strong ~8kb
               minified
           .hero-multiselect
-            = select_tag 'test', :options => select_options, :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
+            = select_tag 'test', :options => select_options(20), :multiple => 'multiple', :class => 'multiselect', :id => 'aloha'
       .page-header#usage
         %h2 Usage
       %h3 HTML
