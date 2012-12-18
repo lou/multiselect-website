@@ -8,7 +8,7 @@
     });
 
     $('#searchable').multiSelect({
-      selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='country name'>"
+      selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='try \"elem 2\"'>"
     });
 
     $('#search').quicksearch($('.ms-elem-selectable', '#ms-searchable' )).on('keydown', function(e){
