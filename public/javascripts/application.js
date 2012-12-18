@@ -20,7 +20,10 @@
     });
 
     
-    $('#optgroup').multiSelect({});
+    $('#optgroup').multiSelect({
+      selectableOptgroup: true
+    });
+
 
     $('#custom-headers').multiSelect({
       selectableHeader: "<div class='custom-header'>Selectable item</div>",

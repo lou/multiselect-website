@@ -20,7 +20,7 @@
         .container
           = link_to '#home', :class => 'brand' do
             multiselect.js
-            %span 0.9.1
+            %span 0.9.2
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -129,7 +129,12 @@
             %td disabledClass
             %td String
             %td 'disabled' 
-            %td CSS class for disabled items
+            %td CSS class for disabled items.
+          %tr
+            %td selectableOptgroup
+            %td Boolean
+            %td false
+            %td Click on optgroup will select all nested options when set to true.
       %h3 Methods
       %br
       %h4 .multiSelect(options)
@@ -346,7 +351,7 @@
             %code{ :'data-language' => 'javascript' }
               = preserve do
                 :escaped
-                  $('#optgroup').multiSelect();
+                  $('#optgroup').multiSelect({ selectableOptgroup: true });
         .span5
           = select_tag('optgroup', :grouped_options => {'Friends' => [['Yoda', 1], ['Obiwan',2]], 'Enemies' => [['Palpatine', 3],['Darth Vader', 4]]} , :selected => [2, 4], :multiple => 'multiple', :id => 'optgroup')
       %br
