@@ -20,7 +20,7 @@
         .container
           = link_to '#home', :class => 'brand' do
             multiselect.js
-            %span 0.9.2
+            %span 0.9.3
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -119,12 +119,22 @@
             %td selectableHeader
             %td HTML/Text
             %td null
-            %td Text or HTML to display on the selectable container.
+            %td Text or HTML to display in the selectable header.
           %tr
             %td selectionHeader
             %td HTML/Text
             %td null
-            %td Text or HTML to display on the selected container.
+            %td Text or HTML to display in the selection header.
+          %tr
+            %td selectableFooter
+            %td HTML/Text
+            %td null
+            %td Text or HTML to display in the selectable footer.
+          %tr
+            %td selectionFooter
+            %td HTML/Text
+            %td null
+            %td Text or HTML to display in the selection footer.
           %tr
             %td disabledClass
             %td String
@@ -390,7 +400,7 @@
       %br
       .row
         .span12
-          %h3 Custom headers
+          %h3 Custom headers and footers
         .span7
           %pre
             %code{ :'data-language' => 'html' }
@@ -409,8 +419,10 @@
               = preserve do
                 :escaped
                   $('#custom-headers').multiSelect({
-                    selectableHeader: "<div class='custom-header'>Selectable item</div>",
-                    selectionHeader: "<div class='custom-header'>Selected items</div>"
+                    selectableHeader: "<div class='custom-header'>Selectable items</div>",
+                    selectionHeader: "<div class='custom-header'>Selection items</div>",
+                    selectableFooter: "<div class='custom-header'>Selectable footer</div>",
+                    selectionFooter: "<div class='custom-header'>Selection footer</div>"
                   });
         .span5
           = select_tag('custom-headers', :options => select_options, :multiple => 'multiple', :id => 'custom-headers')

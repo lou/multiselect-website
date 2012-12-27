@@ -27,7 +27,9 @@
 
     $('#custom-headers').multiSelect({
       selectableHeader: "<div class='custom-header'>Selectable item</div>",
-      selectionHeader: "<div class='custom-header'>Selected items</div>"
+      selectionHeader: "<div class='custom-header'>Selection items</div>",
+      selectableFooter: "<div class='custom-header'>Selectable Footer</div>",
+      selectionFooter: "<div class='custom-header'>Selection Footer</div>"
     });
 
     $('#callbacks').multiSelect({
