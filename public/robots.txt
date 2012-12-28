@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /index.html
+Disallow: /demos.html
+Disallow: /microsoft-access/1673426-easier-code
+Disallow: /blog/2011/07/chosen-plug-in/
