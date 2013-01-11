@@ -8,4 +8,10 @@ Multiselect.controllers :home do
     render 'home/index'
   end
 
+  post :aloha, :map => '/aloha' do
+    {
+
+    }
+  end
+
 end

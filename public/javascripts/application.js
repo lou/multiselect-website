@@ -1,7 +1,7 @@
 // Put your application scripts here
 (function($){
   $(function(){
-    $('.multiselect').multiSelect();
+    $('.multiselect').multiSelect({});
 
     $('#keep-order').multiSelect({
       keepOrder: true
@@ -41,7 +41,8 @@
       }
     });
 
-    $('#public-methods').multiSelect();
+    $('#public-methods').multiSelect({});
+    
     $('#select-all').click(function(){
       $('#public-methods').multiSelect('select_all');
       return false;

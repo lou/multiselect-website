@@ -20,7 +20,7 @@
         .container
           = link_to '#home', :class => 'brand' do
             multiselect.js
-            %span 0.9.3
+            %span 0.9.4
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -106,14 +106,19 @@
             %th description
         %tbody
           %tr
+            %td afterInit
+            %td function
+            %td function(container){}
+            %td Function to call after the multiSelect initilization.
+          %tr
             %td afterSelect
             %td function
-            %td function(value){}
+            %td function(values){}
             %td Function to call after one item is selected.
           %tr
             %td afterDeselect
             %td function
-            %td function(value){}
+            %td function(values){}
             %td Function to call after one item is deselected.
           %tr
             %td selectableHeader
@@ -463,7 +468,7 @@
                   });
 
                   $('#search').quicksearch(
-                    $('li', '#ms-searchable' )).on('keydown', function(e){
+                    $('#search').quicksearch($('.ms-elem-selectable', '#ms-searchable' )).on('keydown', function(e){
                       if (e.keyCode == 40){
                         $(this).trigger('focusout');
                         $('#searchable').focus();
@@ -471,6 +476,12 @@
                       }
                     }
                   );
+        / .row
+        /   .span12
+        /     %h3 Ajax
+        /     %br
+        /   .span12
+        /     = link_to 'Ajax', '#my-modal', :'data-toggle' => 'modal'
       .page-header#project
         %h2 Project
       .row
@@ -517,4 +528,13 @@
       %br
       %br
       %br
-    = javascript_include_tag 'jquery', 'bootstrap', 'jquery.quicksearch.js', 'jquery.multi-select.js', 'rainbow', 'application'
+      #my-modal.modal.hide.fade
+        .modal-header
+          Aloha
+        .modal-body
+          Hello World !
+        .modal-footer
+          Bye bye wolrd !
+          %button.btn{ :'data-dismiss' => 'modal'}
+            close
+    = javascript_include_tag 'jquery', 'bootstrap', 'jquery-ui', 'jquery.tinysort.js', 'jquery.quicksearch.js', 'jquery.multi-select.js', 'rainbow', 'application'
