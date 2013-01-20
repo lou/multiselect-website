@@ -464,7 +464,7 @@
               = preserve do
                 :escaped
                   $('#searchable').multiSelect({
-                    selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='try "elem 2"'>"
+                    selectableHeader: "<input type='text' id='search' autocomplete='off' placeholder='try \"elem 2\"'>"
                   });
 
                   $('#search').quicksearch(
@@ -534,7 +534,7 @@
         .modal-body
           Hello World !
         .modal-footer
-          Bye bye wolrd !
+          Bye bye world !
           %button.btn{ :'data-dismiss' => 'modal'}
             close
     = javascript_include_tag 'jquery', 'bootstrap', 'jquery-ui', 'jquery.tinysort.js', 'jquery.quicksearch.js', 'jquery.multi-select.js', 'rainbow', 'application'
