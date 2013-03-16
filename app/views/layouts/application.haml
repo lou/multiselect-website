@@ -20,7 +20,7 @@
         .container
           = link_to '#home', :class => 'brand' do
             multiselect.js
-            %span 0.9.4
+            %span 0.9.5
           .nav
             %ul.nav
               %li= link_to 'Home', '#home'
@@ -28,6 +28,7 @@
               %li= link_to 'Demos', '#demos'
               %li= link_to 'Project', '#project'
           .nav.pull-right
+            %iframe{ src: "http://ghbtns.com/github-btn.html?user=lou&repo=multi-select&type=watch&count=true", allowtransparency: true, frameborder: 0, scrolling: 0, width: 102, height: 20}
             = link_to 'Download', 'https://github.com/lou/multi-select/zipball/master', :class => 'btn btn-primary'
     .container
       .hero-unit#home
